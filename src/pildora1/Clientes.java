@@ -165,20 +165,6 @@ public class Clientes extends JFrame implements ActionListener,KeyListener {
 		getContentPane().add(Buscar);
 		Buscar.addActionListener(this);
 
-		Actualizar= new JButton();
-		Actualizar.setText("Actualizar");
-		Actualizar.setBounds(700,500,190,30);//x,y,ancho,largo
-		getContentPane().add(Actualizar);
-		Actualizar.addActionListener(this);
-		Actualizar.setEnabled(false);
-
-
-		Mostrar= new JButton();
-		Mostrar.setText("Mostrar");
-		Mostrar.setBounds(1000,500,150,30);//x,y,ancho,largo
-		getContentPane().add(Mostrar);
-		Mostrar.addActionListener(this);
-		Mostrar.setEnabled(false);
 
 		dtm = new DefaultTableModel(datos,Columnas);// forma de la tabla
 		TablaUsuario = new JTable(dtm); // indican el modelo de la tabla
@@ -247,11 +233,9 @@ public class Clientes extends JFrame implements ActionListener,KeyListener {
 			Buscar();
 
 		}
-			if(event.getSource()==Mostrar){
-				Nuevo.setEnabled(true);
+			if(event.getSource()==Nuevo){
                                 Guardar.setEnabled(true);
-				Mostrar.setEnabled(false);
-                                Actualizar.setEnabled(false);
+			
 			}
 
 		    if(event.getSource()==Actualizar) //comienza actualizar
