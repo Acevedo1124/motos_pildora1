@@ -20,7 +20,7 @@ public class Ventas extends JFrame implements ActionListener,KeyListener {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    JLabel lblNroFactura,lblEstado , lblFecha, lblUsuario,
+    JLabel lblNroFactura,lblEstado , lblFecha, lblUsuario,lblmaster,
 	lblIdCliente, lblEmail,lblNombre, lblApellido,lblTelefono , lblDireccion,lblProducto, lblCantidad;
     
     JTextField txtNroFactura, txtUsuario,txtIdCliente ,txtEmail , txtNombre, txtApellido,
@@ -46,7 +46,7 @@ public class Ventas extends JFrame implements ActionListener,KeyListener {
         
         
         public Ventas() {
-	    super("Motos pildora - Ventas Ex");
+	    super("Motos pildora - Ventas");
          
 	    setSize(830,600);
 	    setResizable(false);
@@ -61,7 +61,8 @@ public class Ventas extends JFrame implements ActionListener,KeyListener {
 	   // CREAMOS LOS LABEL
 	    Mat= new String	[100] [20];
 
-
+             //Manuela estuvo aqui
+            
             lblNroFactura= new JLabel("Numero de Factura*");
 	    lblNroFactura.setBounds(10,20,70,25);
 	    getContentPane().add(lblNroFactura);
