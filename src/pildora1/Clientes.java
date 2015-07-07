@@ -20,10 +20,11 @@ public class Clientes extends JFrame implements ActionListener,KeyListener {
 
      JLabel lblMensaje,lblUsuario , lblNumerodeidentificacion, lblNombre,
 	lblApellido, lblTelefono,lblDireccion, lblEmail, lblGenero;
+     
 
 	JTextField txtNumerodeidentificacion, txtUsuario, txtNombre, txtApellido,
 	txtTelefono, txtDireccion, txtEmail;
-        
+          
 	JRadioButton JrMasculino,JrFemenino;
 	ButtonGroup Genero;
 	JButton Nuevo, Guardar, Actualizar, Buscar, Mostrar;
@@ -54,6 +55,8 @@ public class Clientes extends JFrame implements ActionListener,KeyListener {
 
 	   // CREAMOS LOS LABEL
 	    Mat= new String	[100] [20];
+            
+            
 
             lblMensaje= new JLabel("Los campos que contengan * se deben llenar obligatoriamente");
 	    lblMensaje.setBounds(20,160,400,25);
@@ -90,11 +93,8 @@ public class Clientes extends JFrame implements ActionListener,KeyListener {
 	    lblDireccion = new JLabel("Dirección");
 	    lblDireccion.setBounds(420,110,70,25);
 	    getContentPane().add(lblDireccion);
-
-	    
-
-	   
-
+            
+         
 
 	 // CREAMOS LOS CUADROS DE TEXTO
 
@@ -360,7 +360,7 @@ else
 	public void Buscar(){ // Aqui empieza el buscar
 		String usu,Sexo;
 		int z=0;
-		usu= JOptionPane.showInputDialog("Ingrese el Usuario a buscar");
+		usu= JOptionPane.showInputDialog("Ingrese el Nro identificación a buscar");
 		while(z<TablaClientes.getRowCount() && !TablaClientes.getValueAt(z,2).toString().equals(usu)){
 			z++;
 		}
@@ -450,3 +450,4 @@ else
 
 }
 
+ 
