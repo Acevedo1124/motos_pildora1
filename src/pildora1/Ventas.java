@@ -62,7 +62,7 @@ public class Ventas extends JFrame implements ActionListener,KeyListener {
 	    Mat= new String	[100] [20];
 
 
-            lblNroFactura= new JLabel("N°Factura*");
+            lblNroFactura= new JLabel("Numero de Factura*");
 	    lblNroFactura.setBounds(10,20,70,25);
 	    getContentPane().add(lblNroFactura);
             
