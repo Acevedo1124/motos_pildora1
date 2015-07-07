@@ -14,7 +14,7 @@ public class menu_principal extends JFrame implements ActionListener{
 	Icon Foto; //imagen
 	JMenuBar barraMenu= new JMenuBar ();// asi se coloca la barra de menu
 	JMenu Interfaces=new JMenu("Menu Principal");// el nombre que tendra la barra de menu
-	JMenuItem Usuarios, Motos, Clientes , Empleados, Servicios ;
+	JMenuItem Usuario, Motos, Clientes , Empleados, Servicios ;
         //Estos son los items que tendra la lista desplegable de la barra de menu
         
         
@@ -38,14 +38,14 @@ public class menu_principal extends JFrame implements ActionListener{
    lblimagen.setBounds(1,1,650,500);
    getContentPane().add(lblimagen);
     
-    Usuarios= new JMenuItem("Usuarios");
+    Usuario= new JMenuItem("Usuarios");
     Motos=new JMenuItem("Motos");
     Clientes = new JMenuItem("Clientes");
     Empleados= new JMenuItem("Empleados");
     Servicios= new JMenuItem("Compras");
     
 
-    Interfaces.add(Usuarios);
+    Interfaces.add(Usuario);
     Interfaces.add(Motos);
     Interfaces.add(Clientes);
     Interfaces.add(Empleados);
@@ -55,6 +55,7 @@ public class menu_principal extends JFrame implements ActionListener{
     barraMenu.add(Interfaces);
     setJMenuBar(barraMenu);
     Clientes.addActionListener(this);
+    Usuario.addActionListener(this);
 
     }
 
@@ -63,10 +64,16 @@ public class menu_principal extends JFrame implements ActionListener{
 
    	if(event.getSource()==Clientes){
    		Clientes cl = new  Clientes();
+                
+        }
+                if(event.getSource()==Usuario){
+   		Usuario u = new  Usuario();
 
                      
    	}
 
-
-   	}
+                     
+   	
 }
+        }
+
