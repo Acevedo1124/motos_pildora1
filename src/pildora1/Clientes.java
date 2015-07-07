@@ -208,13 +208,14 @@ public class Clientes extends JFrame implements ActionListener,KeyListener {
 
 
 
-			Mat[i][0]=txtNombre.getText();
-			Mat[i][1]=txtApellido.getText();
-			Mat[i][2]=txtNumerodeidentificacion.getText();		//ASI SE LLENAN LOS CUADROS DE TEXTO
-			Mat[i][3]=txtTelefono.getText();
-			Mat[i][4]=txtDireccion.getText();
-			Mat[i][5]=txtEmail.getText();
-			Mat[i][6]=Sexo;//ASI SE LLENAN  UN COMBOBOX
+			Mat[i][0]=txtUsuario.getText();
+                        Mat[i][1]=txtNombre.getText();
+                        Mat[i][2]=txtNumerodeidentificacion.getText();	
+			Mat[i][3]=txtApellido.getText();    //ASI SE LLENAN LOS CUADROS DE TEXTO
+                        Mat[i][4]=txtTelefono.getText();
+			Mat[i][5]=txtDireccion.getText();
+			Mat[i][6]=txtEmail.getText();
+			Mat[i][7]=Sexo;//ASI SE LLENAN  UN COMBOBOX
 
 
 			numReg++;
@@ -246,11 +247,12 @@ public class Clientes extends JFrame implements ActionListener,KeyListener {
 			int i=VerificarFila();
 
 
-            TablaClientes.setValueAt(txtNombre.getText(),i,0);
-            TablaClientes.setValueAt(txtApellido.getText(),i,1);
+            TablaClientes.setValueAt(txtUsuario.getText(),i,0);
+            TablaClientes.setValueAt(txtNombre.getText(),i,1);
             TablaClientes.setValueAt(txtNumerodeidentificacion.getText(),i,2);
-            TablaClientes.setValueAt(txtTelefono.getText(),i,3);
-           TablaClientes.setValueAt(txtDireccion.getText(),i,4);
+            TablaClientes.setValueAt(txtApellido.getText(),i,3);
+            TablaClientes.setValueAt(txtTelefono.getText(),i,4);
+           TablaClientes.setValueAt(txtDireccion.getText(),i,5);
             TablaClientes.setValueAt(txtEmail.getText(),i,6);
 	    
 
@@ -365,14 +367,13 @@ else
 		if(z<i){
                     	txtUsuario.setText(TablaClientes.getValueAt(z,0).toString());
 			txtNombre.setText(TablaClientes.getValueAt(z,1).toString());
-			txtApellido.setText(TablaClientes.getValueAt(z,2).toString());
-			txtNumerodeidentificacion.setText(TablaClientes.getValueAt(z,3).toString());
+			txtNumerodeidentificacion.setText(TablaClientes.getValueAt(z,2).toString());
+                        txtApellido.setText(TablaClientes.getValueAt(z,3).toString());
 			txtTelefono.setText(TablaClientes.getValueAt(z,4).toString());
-
 			txtDireccion.setText(TablaClientes.getValueAt(z,5).toString());//ESTTO ES ESTO
-			txtEmail.setText(Mat[z][8]);//TERMINAR DE HACER ESTO
+			txtEmail.setText(Mat[z][6]);//TERMINAR DE HACER ESTO
 
-			Sexo=Mat[z][9];
+			Sexo=Mat[z][7];
 			if(Sexo=="Masculino"){
 				JrMasculino.doClick();
 			}
@@ -434,8 +435,8 @@ else
 
 	public void Limpiar(){
                         txtUsuario.setText("");
-		txtNumerodeidentificacion.setText("");
 			txtNombre.setText("");
+                        txtNumerodeidentificacion.setText("");
 			txtApellido.setText("");
 			txtTelefono.setText("");
 			txtDireccion.setText("");
@@ -449,9 +450,3 @@ else
 
 }
 
-
-
-
-
-
-    
