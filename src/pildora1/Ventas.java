@@ -46,7 +46,7 @@ public class Ventas extends JFrame implements ActionListener,KeyListener {
         
         
         public Ventas() {
-	    super("Motos pildora - Ventas");
+	    super("Motos pildora - Ventas Ex");
          
 	    setSize(830,600);
 	    setResizable(false);
