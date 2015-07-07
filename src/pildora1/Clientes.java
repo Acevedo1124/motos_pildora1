@@ -28,11 +28,11 @@ public class Clientes extends JFrame implements ActionListener,KeyListener {
 	ButtonGroup Genero;
 	JButton Nuevo, Guardar, Actualizar, Buscar, Mostrar;
 
-	JTable TablaUsuario; //crear tabla
+	JTable TablaClientes; //crear tabla
 	DefaultTableModel dtm; //Modelo tabla
 	JScrollPane tablapanel; //panel para la tabla
 	Object [][] datos = new Object [1][20];//estructura interna de la tabal
-	Object [] Columnas = {"N°Identificacion","Telefono","Direccion", "Email", "Genero"}; //Numero de columnas
+	Object [] Columnas = {"Usuario ","Nombre","N°Identificacion","Apellido","Telefono","Direccion", "Email"}; //Numero de columnas
 
 	String Mat[][];
 	int i=0;
@@ -154,23 +154,23 @@ public class Clientes extends JFrame implements ActionListener,KeyListener {
                 
                 Nuevo= new JButton();
 		Nuevo.setText("Guardar");
-		Nuevo.setBounds(100,500,120,30);//x,y,ancho,largo
+		Nuevo.setBounds(100,500,150,30);//x,y,ancho,largo
 		getContentPane().add(Nuevo);
 		Nuevo.addActionListener(this);
 
 
 		Buscar= new JButton();
 		Buscar.setText("Buscar");
-		Buscar.setBounds(400,500,150,30);//x,y,ancho,largo
+		Buscar.setBounds(300,500,150,30);//x,y,ancho,largo
 		getContentPane().add(Buscar);
 		Buscar.addActionListener(this);
 
 
 		dtm = new DefaultTableModel(datos,Columnas);// forma de la tabla
-		TablaUsuario = new JTable(dtm); // indican el modelo de la tabla
-		tablapanel = new JScrollPane(TablaUsuario);
+		TablaClientes = new JTable(dtm); // indican el modelo de la tabla
+		tablapanel = new JScrollPane(TablaClientes);
 
-		TablaUsuario. setModel(dtm);
+		TablaClientes. setModel(dtm);
 		tablapanel.setBounds(10,210,800,200);
 		tablapanel.setVisible(true);
 		tablapanel.setEnabled(false);
@@ -234,6 +234,7 @@ public class Clientes extends JFrame implements ActionListener,KeyListener {
 
 		}
 			if(event.getSource()==Nuevo){
+
                                 Guardar.setEnabled(true);
 			
 			}
@@ -245,12 +246,12 @@ public class Clientes extends JFrame implements ActionListener,KeyListener {
 			int i=VerificarFila();
 
 
-            TablaUsuario.setValueAt(txtNombre.getText(),i,0);
-            TablaUsuario.setValueAt(txtApellido.getText(),i,1);
-            TablaUsuario.setValueAt(txtNumerodeidentificacion.getText(),i,2);
-            TablaUsuario.setValueAt(txtTelefono.getText(),i,3);
-           TablaUsuario.setValueAt(txtDireccion.getText(),i,4);
-            TablaUsuario.setValueAt(txtEmail.getText(),i,6);
+            TablaClientes.setValueAt(txtNombre.getText(),i,0);
+            TablaClientes.setValueAt(txtApellido.getText(),i,1);
+            TablaClientes.setValueAt(txtNumerodeidentificacion.getText(),i,2);
+            TablaClientes.setValueAt(txtTelefono.getText(),i,3);
+           TablaClientes.setValueAt(txtDireccion.getText(),i,4);
+            TablaClientes.setValueAt(txtEmail.getText(),i,6);
 	    
 
 
@@ -278,7 +279,7 @@ else
    		for (k = 0; k<19; k++) {
    			datos[j][k]= mat[j][k];
    			dtm = new DefaultTableModel(datos,Columnas);
-   			TablaUsuario.setModel(dtm);
+   			TablaClientes.setModel(dtm);
    		}
    		}
 
@@ -288,30 +289,20 @@ else
         //System.out.println("tiped");
         char caracter = e.getKeyChar(); // para leer el caracter correspondiente a la tecla
         int numero = (int) (caracter);
-     if (e.getSource() == txtNombre) {
+     if (e.getSource() == txtUsuario) {
 			if (Character.isDigit(caracter) == true)
                         {
                  	e.consume();
 
                  }
     }
-    if (e.getSource() == txtApellido) {
+    if (e.getSource() == txtNombre) {
 			if (Character.isDigit(caracter) == true)
                         {
                  	e.consume();
 
                  }
     }
-
-
-    if (e.getSource() == txtTelefono) {
-			if (((caracter < '0') || (caracter > '9')) )
-                        {
-					e.consume();
-
-                 }
-    }
-
 
 
     if (e.getSource() == txtNumerodeidentificacion) {
@@ -324,6 +315,34 @@ else
 
 
 
+    if (e.getSource() == txtApellido) {
+			if (((caracter < '0') || (caracter > '9')) )
+                        {
+					e.consume();
+
+                 }
+    }
+ if (e.getSource() == txtApellido) {
+			if (((caracter < '0') || (caracter > '9')) )
+                        {
+					e.consume();
+
+                 }
+    }
+ if (e.getSource() == txtDireccion) {
+			if (((caracter < '0') || (caracter > '9')) )
+                        {
+					e.consume();
+
+                 }
+    }
+ if (e.getSource() == txtEmail) {
+			if (((caracter < '0') || (caracter > '9')) )
+                        {
+					e.consume();
+
+                 }
+    }
    	}
 
     public void keyPressed(KeyEvent e) {
@@ -337,19 +356,20 @@ else
 	}
 
 	public void Buscar(){ // Aqui empieza el buscar
-		String Doc,Sexo;
+		String usu,Sexo;
 		int z=0;
-		Doc= JOptionPane.showInputDialog("Ingrese el documento a buscar");
-		while(z<TablaUsuario.getRowCount() && !TablaUsuario.getValueAt(z,2).toString().equals(Doc)){
+		usu= JOptionPane.showInputDialog("Ingrese el Usuario a buscar");
+		while(z<TablaClientes.getRowCount() && !TablaClientes.getValueAt(z,2).toString().equals(usu)){
 			z++;
 		}
 		if(z<i){
-			txtNombre.setText(TablaUsuario.getValueAt(z,0).toString());
-			txtApellido.setText(TablaUsuario.getValueAt(z,1).toString());
-			txtNumerodeidentificacion.setText(TablaUsuario.getValueAt(z,2).toString());
-			txtTelefono.setText(TablaUsuario.getValueAt(z,5).toString());
+                    	txtUsuario.setText(TablaClientes.getValueAt(z,0).toString());
+			txtNombre.setText(TablaClientes.getValueAt(z,1).toString());
+			txtApellido.setText(TablaClientes.getValueAt(z,2).toString());
+			txtNumerodeidentificacion.setText(TablaClientes.getValueAt(z,3).toString());
+			txtTelefono.setText(TablaClientes.getValueAt(z,4).toString());
 
-			txtDireccion.setText(TablaUsuario.getValueAt(z,7).toString());//ESTTO ES ESTO
+			txtDireccion.setText(TablaClientes.getValueAt(z,5).toString());//ESTTO ES ESTO
 			txtEmail.setText(Mat[z][8]);//TERMINAR DE HACER ESTO
 
 			Sexo=Mat[z][9];
@@ -401,9 +421,9 @@ else
 	}
 
 	public void eliminar(){ // Este es el deshabilitar
-		for(int w=0;w<TablaUsuario.getRowCount();w++)
+		for(int w=0;w<TablaClientes.getRowCount();w++)
   				{
-  					if(TablaUsuario.getValueAt(w,2).toString().equals(txtNumerodeidentificacion.getText()))
+  					if(TablaClientes.getValueAt(w,2).toString().equals(txtNumerodeidentificacion.getText()))
   					{
   						dtm.removeRow(w);
   					}
