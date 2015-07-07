@@ -67,7 +67,7 @@ ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/imagenes/" + imag
    	if(event.getSource()==Clientes){
    		Clientes cl = new  Clientes();
 
-
+                     
    	}
 
 
