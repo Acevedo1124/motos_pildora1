@@ -22,22 +22,22 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
             lblApellido, lblNombredeusuario, lblContraseña, lblTelefono,
             lblDireccion, lblEmail, lblGenero, lblEstado, lblPerfil;
     JTextField txtNumerodeidentificacion, txtNombre, txtApellido, txtNombredeusuario,
-            txtTelefono, txtDireccion, txtEmail, txtPerfil;
+            txtTelefono, txtDireccion, txtEmail;
     JPasswordField txtContraseña;
     JRadioButton JrMasculino, JrFemenino;
     ButtonGroup Genero;
-    JButton Nuevo, Guardar, Actualizar, Buscar, Mostrar;
+    JButton Registrar, Actualizar, Buscar, Salir;
     JTable TablaUsuario; //crear tabla
     DefaultTableModel dtm; //Modelo tabla
     JScrollPane tablapanel; //panel para la tabla
     Object[][] datos = new Object[1][20];//estructura interna de la tabal
-    Object[] Columnas = {"Nombre", "Apellido", "NumeroIdentificacion", "TipoIdentificacion",
-        "Usuario", "Telefono", "Direccion", "Email", "Genero",
+    Object[] Columnas = {"Nombre", "Apellido", "N° identificación", "Tipo identificación",
+        "Usuario", "Teléfono", "Dirección", "Email", "Genero",
         "Estado", "Perfil"}; //Numero de columnas
     String Mat[][];
     int i = 0;
     int numReg = 0;
-    JComboBox CoTipodeidentificacion, CoEstado;
+    JComboBox CoTipodeidentificacion, CoEstado, CoPerfil;
 
     public Usuario() {
         super("Motos pildora- Usuario");
@@ -146,12 +146,6 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
         txtEmail.setBounds(500, 50, 200, 25);
         getContentPane().add(txtEmail);
 
-        txtPerfil = new JTextField();
-        txtPerfil.setBounds(500, 200, 200, 25);
-        getContentPane().add(txtPerfil);
-
-
-
 
 
         // SE CREAN LOS RADIO BUTTON
@@ -176,7 +170,7 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
         CoTipodeidentificacion.setBounds(170, 110, 120, 25);
         CoTipodeidentificacion.addItem("TI");
         CoTipodeidentificacion.addItem("CC");
-        getContentPane().add(CoTipodeidentificacion); 
+        getContentPane().add(CoTipodeidentificacion);
 
 
         CoEstado = new JComboBox();
@@ -185,19 +179,21 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
         CoEstado.addItem("Inactivo");
         getContentPane().add(CoEstado);
 
+        CoPerfil = new JComboBox();
+        CoPerfil.setBounds(500, 200, 200, 25);
+        CoPerfil.addItem("Administrador");
+        CoPerfil.addItem("Empleados");
+        CoPerfil.addItem("Clientes");
+        getContentPane().add(CoPerfil);
+
+
 
         //CREAMOS LOS BOTONES
-        Nuevo = new JButton();
-        Nuevo.setText("Nuevo");
-        Nuevo.setBounds(100, 500, 120, 30);//x,y,ancho,largo
-        getContentPane().add(Nuevo);
-        Nuevo.addActionListener(this);
-
-        Guardar = new JButton();
-        Guardar.setText("Guardar");
-        Guardar.setBounds(400, 500, 150, 30);//x,y,ancho,largo
-        getContentPane().add(Guardar);
-        Guardar.addActionListener(this);
+        Registrar = new JButton();
+        Registrar.setText("Registrar");
+        Registrar.setBounds(100, 500, 120, 30);//x,y,ancho,largo
+        getContentPane().add(Registrar);
+        Registrar.addActionListener(this);
 
 
         Buscar = new JButton();
@@ -211,15 +207,15 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
         Actualizar.setBounds(700, 500, 190, 30);//x,y,ancho,largo
         getContentPane().add(Actualizar);
         Actualizar.addActionListener(this);
-        Actualizar.setEnabled(false);
+        Actualizar.setEnabled(true);
 
 
-        Mostrar = new JButton();
-        Mostrar.setText("Mostrar");
-        Mostrar.setBounds(1000, 500, 150, 30);//x,y,ancho,largo
-        getContentPane().add(Mostrar);
-        Mostrar.addActionListener(this);
-        Mostrar.setEnabled(false);
+        Salir = new JButton();
+        Salir.setText("Salir");
+        Salir.setBounds(1000, 500, 150, 30);//x,y,ancho,largo
+        getContentPane().add(Salir);
+        Salir.addActionListener(this);
+
 
         dtm = new DefaultTableModel(datos, Columnas);// forma de la tabla
         TablaUsuario = new JTable(dtm); // indican el modelo de la tabla
@@ -233,7 +229,6 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
 
         txtNombre.addKeyListener(this);
         txtApellido.addKeyListener(this);
-        txtPerfil.addKeyListener(this);
         txtTelefono.addKeyListener(this);
         txtNumerodeidentificacion.addKeyListener(this);
 
@@ -243,7 +238,7 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
     }
 
     public void actionPerformed(ActionEvent event) {
-        if (event.getSource() == Nuevo) {  //nuevo
+        if (event.getSource() == Registrar) {  //nuevo
             String Sexo = "", Fecha;
 
             if (JrFemenino.isSelected()) {
@@ -269,12 +264,11 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
                     Mat[i][3] = (String) CoTipodeidentificacion.getSelectedItem().toString();
                     Mat[i][4] = txtNombredeusuario.getText();
                     Mat[i][5] = txtTelefono.getText();
-                    Mat[i][7] = txtDireccion.getText();
-                    Mat[i][8] = txtEmail.getText();
-                    Mat[i][9] = Sexo;//ASI SE LLENAN  UN COMBOBOX
-
-                    Mat[i][11] = (String) CoEstado.getSelectedItem().toString();
-                    Mat[i][15] = txtPerfil.getText();
+                    Mat[i][6] = txtDireccion.getText();
+                    Mat[i][7] = txtEmail.getText();
+                    Mat[i][8] = Sexo;//ASI SE LLENAN  UN COMBOBOX
+                    Mat[i][9] = (String) CoEstado.getSelectedItem().toString();
+                    Mat[i][10] = (String) CoPerfil.getSelectedItem().toString();
 
 
                     numReg++;
@@ -285,20 +279,19 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
                     JOptionPane.showMessageDialog(this, "Datos Guardados con exito");
 
                     LlenarTabla(Mat, i);
-                    Nuevo.setEnabled(true);
+                    Registrar.setEnabled(true);
                 }
             }
         }
 
         if (event.getSource() == Buscar) {
             Buscar();
+            txtNumerodeidentificacion.setEnabled(false);
 
         }
-        if (event.getSource() == Mostrar) {
-            Nuevo.setEnabled(true);
-            Guardar.setEnabled(true);
-            Mostrar.setEnabled(false);
-            Actualizar.setEnabled(false);
+        if (event.getSource() == Salir) {
+            Registrar.setEnabled(true);
+
         }
 
         if (event.getSource() == Actualizar) //comienza actualizar
@@ -311,11 +304,13 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
                 TablaUsuario.setValueAt(txtApellido.getText(), i, 1);
                 TablaUsuario.setValueAt(txtNumerodeidentificacion.getText(), i, 2);
                 TablaUsuario.setValueAt(CoTipodeidentificacion.getSelectedItem(), i, 3);
-                TablaUsuario.setValueAt(txtTelefono.getText(), i, 4);
+                TablaUsuario.setValueAt(txtNombredeusuario.getText(), i, 4);
+                TablaUsuario.setValueAt(txtTelefono.getText(), i, 5);
                 TablaUsuario.setValueAt(txtDireccion.getText(), i, 6);
                 TablaUsuario.setValueAt(txtEmail.getText(), i, 7);
-                TablaUsuario.setValueAt(CoEstado.getSelectedItem(), i, 10);
-                TablaUsuario.setValueAt(txtPerfil.getText(), i, 14);
+                
+                TablaUsuario.setValueAt(CoEstado.getSelectedItem(), i, 9);
+                TablaUsuario.setValueAt(CoPerfil.getSelectedItem(), i, 10);
 
 
 
@@ -356,12 +351,6 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
             }
         }
         if (e.getSource() == txtApellido) {
-            if (Character.isDigit(caracter) == true) {
-                e.consume();
-
-            }
-        }
-        if (e.getSource() == txtPerfil) {
             if (Character.isDigit(caracter) == true) {
                 e.consume();
 
@@ -412,15 +401,14 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
             CoTipodeidentificacion.setSelectedItem(TablaUsuario.getValueAt(z, 3).toString());
             txtNombredeusuario.setText(TablaUsuario.getValueAt(z, 4).toString());
             txtTelefono.setText(TablaUsuario.getValueAt(z, 5).toString());
-
-            txtDireccion.setText(TablaUsuario.getValueAt(z, 7).toString());//ESTTO ES ESTO
-            txtEmail.setText(Mat[z][8]);//TERMINAR DE HACER ESTO
-
-
-            CoEstado.setSelectedItem(Mat[z][11]);
-            txtPerfil.setText(Mat[z][15]);
-
+            txtDireccion.setText(TablaUsuario.getValueAt(z, 6).toString());//ESTTO ES ESTO
+            txtEmail.setText(Mat[z][7]);//TERMINAR DE HACER ESTO
             Sexo = Mat[z][9];
+            CoEstado.setSelectedItem(TablaUsuario.getValueAt(z, 8).toString());
+
+            CoPerfil.setSelectedItem(TablaUsuario.getValueAt(z, 9).toString());
+
+
             if ("Masculino".equals(Sexo)) {
                 JrMasculino.doClick();
             }
@@ -429,13 +417,13 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
             }
             //ACUERDESE DE HACE LO ANTERIOR
 
-            Nuevo.setEnabled(false);
+            Registrar.setEnabled(true);
             Actualizar.setEnabled(true);
-            Mostrar.setEnabled(true);
+            Salir.setEnabled(true);
 
         } else {
-            JOptionPane.showMessageDialog(null, "No se encontro");
-            Nuevo.setEnabled(true);
+            JOptionPane.showMessageDialog(null, "No se encontró");
+            Registrar.setEnabled(true);
         }
     }
 
@@ -453,6 +441,7 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
             res = false;
         }
         return res;
+
 
     }
 
@@ -486,11 +475,11 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
         txtTelefono.setText("");
         txtDireccion.setText("");
         txtEmail.setText("");
-        txtPerfil.setText("");
         txtContraseña.setText("");
 
         CoTipodeidentificacion.setSelectedIndex(0);
         CoEstado.setSelectedIndex(0);
+        CoPerfil.setSelectedItem(0);
 
         Genero.clearSelection();
     }

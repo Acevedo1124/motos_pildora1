@@ -21,7 +21,7 @@ public class Ventas extends JFrame implements ActionListener,KeyListener {
     }
     
     JLabel lblNroFactura,lblEstado , lblFecha, lblUsuario,lblmaster,
-	lblIdCliente, lblEmail,lblNombre, lblApellido,lblTelefono , lblDireccion,lblProducto, lblCantidad,lblimage;
+	lblIdCliente, lblEmail,lblNombre, lblApellido,lblTelefono , lblDireccion,lblProducto, lblCantidad;
     
     JTextField txtNroFactura, txtUsuario,txtIdCliente ,txtEmail , txtNombre, txtApellido,
 	txtTelefono, txtDireccion, txtCantidad;
@@ -61,13 +61,7 @@ public class Ventas extends JFrame implements ActionListener,KeyListener {
 	   // CREAMOS LOS LABEL
 	    Mat= new String	[100] [20];
 
-            
-            Icon image = new ImageIcon(getClass().getResource("/imagenes/images.jpg"));
-    
-   lblimage = new JLabel(image);
-   lblimage.setBounds(1,1,650,500);
-   getContentPane().add(lblimage);
-            
+           
             lblNroFactura= new JLabel("Numero de Factura*");
 	    lblNroFactura.setBounds(10,20,70,25);
 	    getContentPane().add(lblNroFactura);

@@ -32,7 +32,7 @@ public class menu_principal extends JFrame implements ActionListener{
     setDefaultCloseOperation(menu_principal.EXIT_ON_CLOSE);
 
 
-  Icon image = new ImageIcon(getClass().getResource("/imagenes/DSCF01314.jpg"));
+  Icon image = new ImageIcon(getClass().getResource("/imagenes/images.jpg"));
   
    lblimagen = new JLabel(image);
    lblimagen.setBounds(1,1,650,500);
