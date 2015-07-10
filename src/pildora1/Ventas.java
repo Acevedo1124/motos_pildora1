@@ -29,7 +29,7 @@ public class Ventas extends JFrame implements ActionListener,KeyListener {
     
     
     
-    JButton Nuevo, Guardar, Actualizar, Buscar, Mostrar;
+    JButton Nuevo, Actualizar, Buscar, Salir;
     
     JMenuItem Aceite, Tornillos, Caja_Filtro, Llantas, Liquido_Frenos;
     
@@ -164,19 +164,31 @@ public class Ventas extends JFrame implements ActionListener,KeyListener {
     
             //CREAMOS LOS BOTONES
 		
-                
-                Nuevo= new JButton();
-		Nuevo.setText("Guardar");
-		Nuevo.setBounds(100,500,150,30);//x,y,ancho,largo
-		getContentPane().add(Nuevo);
-		Nuevo.addActionListener(this);
+                  Nuevo = new JButton();
+        Nuevo.setText("Regristrar");
+        Nuevo.setBounds(10,450,120,30);//x,y,ancho,largo
+        getContentPane().add(Nuevo);
+        Nuevo.addActionListener(this);
 
+        Buscar = new JButton();
+        Buscar.setText("Buscar");
+        Buscar.setBounds(200, 450, 150, 30);//x,y,ancho,largo
+        getContentPane().add(Buscar);
+        Buscar.addActionListener(this);
+        
+        Actualizar = new JButton();
+        Actualizar.setText("Actualizar");
+        Actualizar.setBounds(420,450, 190, 30);//x,y,ancho,largo
+        getContentPane().add(Actualizar);
+        Actualizar.addActionListener(this);
+        Actualizar.setEnabled(true);
+        
 
-		Buscar= new JButton();
-		Buscar.setText("Buscar");
-		Buscar.setBounds(300,500,150,30);//x,y,ancho,largo
-		getContentPane().add(Buscar);
-		Buscar.addActionListener(this);
+        Salir = new JButton();
+        Salir.setText("Salir");
+        Salir.setBounds(660, 450, 150, 30);//x,y,ancho,largo
+        getContentPane().add(Salir);
+        Salir.addActionListener(this);
 
 
 		dtm = new DefaultTableModel(datos,Columnas);// forma de la tabla
@@ -261,9 +273,21 @@ public class Ventas extends JFrame implements ActionListener,KeyListener {
 			Buscar();
 
 		}
+                
+              if(event.getSource()== Salir){
+              int Respuesta = JOptionPane.showConfirmDialog(null,"¿Esta seguro que se quiere salir?","pregunta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+              if(Respuesta==0){    
+              }
+              setVisible(false);
+              }
+              
+              Nuevo.setEnabled(true);
+              
+              
+              
 			if(event.getSource()==Nuevo){
 
-                                Guardar.setEnabled(true);
+                                Nuevo.setEnabled(true);
 			
 			}
 
@@ -409,7 +433,7 @@ else
 
 			Nuevo.setEnabled(false);
 			Actualizar.setEnabled(true);
-			Mostrar.setEnabled(true);
+			Salir.setEnabled(true);
 
 		}else{
 			JOptionPane.showMessageDialog(null,"No se encontro");

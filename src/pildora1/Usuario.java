@@ -290,6 +290,11 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
 
         }
         if (event.getSource() == Salir) {
+            int Respuesta = JOptionPane.showConfirmDialog(null,"¿Esta seguro que se quiere sali?","Pregunta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(Respuesta == 0)
+            {
+                setVisible(false);
+            }
             Registrar.setEnabled(true);
 
         }
@@ -322,7 +327,7 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
 
 
         }
-
+        
     }
 
     public void LlenarTabla(String mat[][], int i) {
@@ -479,7 +484,7 @@ public class Usuario extends JFrame implements ActionListener, KeyListener {
 
         CoTipodeidentificacion.setSelectedIndex(0);
         CoEstado.setSelectedIndex(0);
-        CoPerfil.setSelectedItem(0);
+        CoPerfil.setSelectedIndex(0);
 
         Genero.clearSelection();
     }

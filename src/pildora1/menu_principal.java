@@ -57,6 +57,7 @@ public class menu_principal extends JFrame implements ActionListener{
     Clientes.addActionListener(this);
     Usuario.addActionListener(this);
     Ventas.addActionListener(this);
+    Empleados.addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent event)
@@ -72,7 +73,9 @@ public class menu_principal extends JFrame implements ActionListener{
                 if(event.getSource()==Ventas){
    		Ventas v = new  Ventas();            
    	}
-
+                if(event.getSource()==Empleados){
+   		Empleados e = new Empleados() {};            
+   	}
                      
    	
 }

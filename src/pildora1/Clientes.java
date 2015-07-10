@@ -20,7 +20,7 @@ public class Clientes extends JFrame implements ActionListener, KeyListener {
             txtTelefono, txtDireccion, txtEmail;
     JRadioButton JrMasculino, JrFemenino;
     ButtonGroup Genero;
-    JButton Nuevo, Guardar, Actualizar, Buscar, Mostrar;
+    JButton Nuevo,  Actualizar, Buscar, Salir;
     JTable TablaClientes; //crear tabla
     DefaultTableModel dtm; //Modelo tabla
     JScrollPane tablapanel; //panel para la tabla
@@ -141,15 +141,29 @@ public class Clientes extends JFrame implements ActionListener, KeyListener {
 
         Nuevo = new JButton();
         Nuevo.setText("Regristrar");
-        Nuevo.setBounds(100, 500, 150, 30);//x,y,ancho,largo
+        Nuevo.setBounds(10,450,120,30);//x,y,ancho,largo
         getContentPane().add(Nuevo);
         Nuevo.addActionListener(this);
 
         Buscar = new JButton();
         Buscar.setText("Buscar");
-        Buscar.setBounds(300, 500, 150, 30);//x,y,ancho,largo
+        Buscar.setBounds(200, 450, 150, 30);//x,y,ancho,largo
         getContentPane().add(Buscar);
         Buscar.addActionListener(this);
+        
+        Actualizar = new JButton();
+        Actualizar.setText("Actualizar");
+        Actualizar.setBounds(420,450, 190, 30);//x,y,ancho,largo
+        getContentPane().add(Actualizar);
+        Actualizar.addActionListener(this);
+        Actualizar.setEnabled(true);
+        
+
+        Salir = new JButton();
+        Salir.setText("Salir");
+        Salir.setBounds(660, 450, 150, 30);//x,y,ancho,largo
+        getContentPane().add(Salir);
+        Salir.addActionListener(this);
 
 
         dtm = new DefaultTableModel(datos, Columnas);// forma de la tabla
@@ -218,11 +232,20 @@ public class Clientes extends JFrame implements ActionListener, KeyListener {
 
         if (event.getSource() == Buscar) {
             Buscar();
- txtNumerodeidentificacion.setEnabled(false);
+
         }
+       
+        if(event.getSource()==Salir){
+             int Respuesta = JOptionPane.showConfirmDialog(null,"¿Esta seguro que se quiere salir?","Pregunta",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+             if(Respuesta==0){
+             }
+             setVisible(false);
+        }
+        Nuevo.setEnabled(true);
+        
         if (event.getSource() == Nuevo) {
 
-            Guardar.setEnabled(true);
+            Nuevo.setEnabled(true);
 
         }
 
@@ -254,7 +277,7 @@ public class Clientes extends JFrame implements ActionListener, KeyListener {
 
     }
 
-    public void LlenarTabla(String mat[][], int i) {
+  public void LlenarTabla(String mat[][], int i) {
         int k;
         int j;
         Object[][] datos = new Object[i][20];//estructura interna de la tabal
@@ -359,7 +382,7 @@ public class Clientes extends JFrame implements ActionListener, KeyListener {
 
             Nuevo.setEnabled(false);
             Actualizar.setEnabled(true);
-            Mostrar.setEnabled(true);
+            Salir.setEnabled(true);
 
         } else {
             JOptionPane.showMessageDialog(null, "No se encontro");
